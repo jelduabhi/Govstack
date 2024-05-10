@@ -9,17 +9,5 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    public static Scenario scenario;
-    @Before
-    public void setup(Scenario scenario){
-        Hooks.scenario =scenario;
-        WebDriverManager.initDriver();
-    }
 
-    @After
-    public static void tearDown(Scenario scenario){
-        final byte[] screenshot=((TakesScreenshot)WebDriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
-        scenario.attach(screenshot,"image/png",scenario.getName());
-        WebDriverManager.closeDriver();
-    }
 }

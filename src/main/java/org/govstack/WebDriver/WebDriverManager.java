@@ -9,19 +9,18 @@ import java.time.Duration;
 
 public class WebDriverManager extends WebDriverCapabilities{
 
-    static ThreadLocal<WebDriver> driver;
+    static WebDriver driver;
 
 
     public static void initDriver(){
-        driver.set(new ChromeDriver(setDriverCapabilities()));
-        driver.get().manage().deleteAllCookies();
+        driver =new ChromeDriver(setDriverCapabilities());
     }
 
     public static void closeDriver(){
-        driver.get().close();
+        driver.close();
     }
 
     public static WebDriver getDriver(){
-        return driver.get();
+        return driver;
     }
 }

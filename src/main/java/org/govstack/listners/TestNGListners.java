@@ -1,7 +1,9 @@
 package org.govstack.listners;
 
+import io.cucumber.java.Scenario;
 import org.govstack.WebDriver.WebDriverManager;
-import org.govstack.framework.ExtentReport;
+import org.govstack.framework.ExtentReporter;
+import org.govstack.stepdefinition.Hooks;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -10,24 +12,24 @@ public class TestNGListners implements ITestListener {
 
     public void onTestStart(ITestResult result) {
         WebDriverManager.initDriver();
-        ExtentReport.initReport(result.getName());
-        ExtentReport.initTest(result.getTestName(),"Test Results");
+        ExtentReporter.initTest("Test");
     }
 
     public void onTestSuccess(ITestResult result) {
         WebDriverManager.closeDriver();
-        ExtentReport.endReport(result.getTestName());
     }
 
     public void onTestFailure(ITestResult result) {
         WebDriverManager.closeDriver();
-        ExtentReport.endReport(result.getTestName());
     }
 
     public void onTestSkipped(ITestResult result) {
+        WebDriverManager.closeDriver();
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+        ExtentReporter.endReport();
+        WebDriverManager.closeDriver();
     }
 
     public void onTestFailedWithTimeout(ITestResult result) {
@@ -35,8 +37,10 @@ public class TestNGListners implements ITestListener {
     }
 
     public void onStart(ITestContext context) {
+        ExtentReporter.initReport(context.getName());
     }
 
     public void onFinish(ITestContext context) {
+        ExtentReporter.endReport();
     }
 }

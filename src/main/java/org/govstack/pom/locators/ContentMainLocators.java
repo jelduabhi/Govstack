@@ -3,7 +3,7 @@ package org.govstack.pom.locators;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ContentMainLocators {
+public class ContentMainLocators extends InitElements{
 
     @FindBy(xpath = "(//button[@data-element='tree-item-expand'])[1]")
     public WebElement mainSiteExpandBtn;

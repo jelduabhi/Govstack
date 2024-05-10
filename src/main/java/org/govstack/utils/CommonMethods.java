@@ -1,32 +1,33 @@
 package org.govstack.utils;
 
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.Status;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.govstack.WebDriver.WebDriverManager;
-import org.govstack.framework.ExtentReport;
+import org.govstack.framework.ExtentReporter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.page.Page;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Calendar;
+import java.util.List;
 
 public class CommonMethods extends WebDriverManager {
 
-    public CommonMethods(){
-        PageFactory.initElements(getDriver(),this);
-    }
+    WebDriverWait driverWait=new WebDriverWait(getDriver(),Duration.ofSeconds(30));
     public static String captureScreen(){
         String path;
         File targetPath;
         try{
-            WebDriver driver=new Augmenter().augment(getDriver());
             File source=((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-            path= ExtentReport.reportPath+"/"+source.getName();
+            path= ExtentReporter.reportPath+"/"+source.getName();
             targetPath=new File(path);
             FileUtils.copyFile(source,targetPath);
             return source.getName();
@@ -36,11 +37,44 @@ public class CommonMethods extends WebDriverManager {
     }
     public void clickElement(WebElement ele){
         try{
+            driverWait.until(ExpectedConditions.elementToBeClickable(ele));
             ele.click();
-            ExtentReport.log(LogStatus.INFO,ele+" clicked");
+            ExtentReporter.log(Status.INFO,ele+" clicked");
         }catch (Exception e){
-            ExtentReport.log(LogStatus.FAIL,ele+" Unable to click element");
+            ExtentReporter.logWithScreenshot(Status.FAIL,ele+" Unable to click element");
             Assert.fail();
         }
     }
+
+    public void sendTextToElement(WebElement ele,String text){
+        try{
+            driverWait.until(ExpectedConditions.visibilityOf(ele));
+            ele.sendKeys(text);
+            ExtentReporter.log(Status.INFO,ele+" clicked");
+        }catch (Exception e){
+            ExtentReporter.logWithScreenshot(Status.FAIL,ele+" Unable to click element");
+            Assert.fail();
+        }
+    }
+
+    public String getCurrentDate(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat dateOnly = new SimpleDateFormat("MM/dd/yyyy");
+        return dateOnly.format(cal.getTime()).split("/")[1].toString();
+    }
+
+    public void selectDate(List<WebElement> ele, String date){
+        for(WebElement element:ele){
+            if(element.getText().equals(date)){
+                element.click();
+                break;
+            }
+        }
+    }
+
+    public String generateRandomString(){
+        String generatedString = RandomStringUtils.randomAlphanumeric(5);
+        return generatedString;
+    }
+
 }

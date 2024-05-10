@@ -2,9 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
-        <listener class-name="org.govstack.listners.TestNGListners"></listener>
+        <listener class-name="org.govstack.listners.TestNGListners"/>
     </listeners>
-    <test verbose="2" preserve-order="true" name="D:/GovStack/GovStack_Automation">
-        <classes/>
+    <parameter name="cucumber.filter.tags" value="@createNews"/>
+    <test name="GovStack Automation" preserve-order="false">
+        <classes>
+            <class name="org.govstack.TestRunner.TestRunner"/>
+        </classes>
     </test>
 </suite>

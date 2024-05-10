@@ -13,8 +13,7 @@
     <TestNG.version>7.10.2</TestNG.version>
     <Cucumber.version>7.17.0</Cucumber.version>
     <Apache.POI.version>5.2.5</Apache.POI.version>
-    <Allure.version>2.27.0</Allure.version>
-    <ExtentReport.version>5.0.9</ExtentReport.version>
+    <ExtentReport.version>5.1.1</ExtentReport.version>
     <Junit.version>5.10.2</Junit.version>
     <lambok.version>1.18.32</lambok.version>
   </properties>
@@ -74,29 +73,11 @@
       <version>${Junit.version}</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-java-commons -->
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-java-commons</artifactId>
-      <version>${Allure.version}</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-testng</artifactId>
-      <version>${Allure.version}</version>
-    </dependency>
     <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-    <!--<dependency>
+    <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>${ExtentReport.version}</version>
-    </dependency>-->
-    <!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
-    <dependency>
-      <groupId>com.relevantcodes</groupId>
-      <artifactId>extentreports</artifactId>
-      <version>2.41.2</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
     <dependency>
@@ -105,6 +86,11 @@
       <version>${lambok.version}</version>
       <scope>provided</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.14.0</version>
+    </dependency>
   </dependencies>
-
 </project>
