@@ -17,6 +17,8 @@
     <Junit.version>5.10.2</Junit.version>
     <lambok.version>1.18.32</lambok.version>
   </properties>
+
+  
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>

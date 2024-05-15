@@ -1,5 +1,6 @@
 package org.govstack.listners;
 
+import com.aventstack.extentreports.Status;
 import io.cucumber.java.Scenario;
 import org.govstack.WebDriver.WebDriverManager;
 import org.govstack.framework.ExtentReporter;
@@ -16,6 +17,7 @@ public class TestNGListners implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult result) {
+        ExtentReporter.logWithScreenshot(Status.PASS,"");
         WebDriverManager.closeDriver();
     }
 

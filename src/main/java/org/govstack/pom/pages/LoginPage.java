@@ -27,6 +27,8 @@ public class LoginPage {
             methods.clickElement(locators.nextBtn);
             methods.sendTextToElement(locators.passwordTxt,ConfigurationManager.getPropertyValue("CMS_QA_PASSWORD"));
             methods.clickElement(locators.signInBtn);
+            ExtentReporter.logWithScreenshot(Status.PASS,"Launched application");
+            methods.waitForElement(15);
         }catch (Exception e){
             ExtentReporter.log(Status.FAIL,"Unable to login to the application");
             Assert.fail();

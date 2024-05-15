@@ -5,7 +5,7 @@
         <listener class-name="org.govstack.listners.TestNGListners"/>
     </listeners>
     <parameter name="cucumber.filter.tags" value="@createNews"/>
-    <test name="GovStack Automation" preserve-order="false">
+    <test name="GovStack Automation" preserve-order="true">
         <classes>
             <class name="org.govstack.TestRunner.TestRunner"/>
         </classes>

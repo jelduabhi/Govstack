@@ -37,6 +37,8 @@ public class TestData {
             for(Integer index:values.keySet()){
                 datacomb.put(keys.get(index),values.get(index));
             }
+            keys.clear();
+            values.clear();
         } catch (Exception e) {
             System.out.println("Unable to read test data");
         }

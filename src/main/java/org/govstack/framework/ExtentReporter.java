@@ -14,7 +14,6 @@ import java.util.Date;
 public class ExtentReporter extends CommonMethods {
 
     public static String reportPath;
-
     static ExtentReports extent;
     static ExtentSparkReporter spark;
     static ExtentTest extentTest;
@@ -37,11 +36,8 @@ public class ExtentReporter extends CommonMethods {
     public static void log(Status logStatus, String stepName) {
         switch (logStatus) {
             case PASS, INFO, SKIP, FAIL -> extentTest.log(logStatus, stepName);
-
             default -> {
-
             }
-
         }
     }
 
@@ -50,7 +46,6 @@ public class ExtentReporter extends CommonMethods {
             case PASS, INFO, SKIP, FAIL -> extentTest.addScreenCaptureFromPath(CommonMethods.captureScreen(), stepName);
             default -> {
             }
-
         }
     }
 

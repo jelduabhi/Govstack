@@ -20,32 +20,39 @@ public class NewsLocators extends InitElements {
     @FindBy(id = "headerName")
     public WebElement headerNameTxt;
 
-    @FindBy(xpath = "//button[@class=\"btn-clear ng-hide\"]")
+    @FindBy(xpath = "//span[@icon='icon-calendar']")
     public WebElement datePicker;
     @FindBy(xpath = "//div[@class='dayContainer']/span")
     public List<WebElement> postDateTxt;
 
     @FindBy(xpath = "//div[@class='umb-editor-footer']/div/div[2]/umb-button/div/button")
     public WebElement saveBtn;
-    @FindBy(xpath = "(//*[@name='contentPickerForm']/button)[1]")
+
+    @FindBy(xpath = "//button[@id='postCategories']")
     public WebElement postCategoriesBtn;
+    @FindBy(xpath = "//a[@class='umb-tree-item__label']")
+    public List<WebElement> selectCategory;
+    @FindBy(xpath = "//umb-button[@label-key='general_submit']/div/button")
+    public WebElement submitBtn;
+    @FindBy(xpath = "//button[@id='postAuthor']")
+    public WebElement authorBtn;
+    @FindBy(xpath = "//div[@class='umb-table-cell black umb-minilistview__fade-not-allowed']")
+    public List<WebElement> selectAuthor;
     @FindBy(xpath = "//span[@id='disableComments]")
     public WebElement DisableCommentsTxt;
     @FindBy(xpath = "//div[@class='umb-toggle__toggle']")
     public WebElement SendSubscriberNotificationTxt;
-    @FindBy(xpath = "//input[@id='customMessage']")
+    @FindBy(xpath = "//body[contains(@data-id,'customMessage')]")
     public WebElement CustomMessageTxt;
-    @FindBy(xpath = "//button[@id='postCategories']")
-    public WebElement PostCategoriesTxt;
-    @FindBy(xpath = "//button[@id='postAuthor']")
-    public WebElement AuthorTxt;
 
 
     /**
      * Content
      **/
+    @FindBy(xpath = "(//button[contains(text(),'Content')])[1]")
+    public WebElement contentMenuBtn;
     @FindBy(xpath = "//input[@value='pageLayoutFull']")
-    public WebElement LayoutFullTxt;
+    public WebElement layoutFullLnk;
     @FindBy(xpath = "//label[@class='usn-item item  pageLayoutLeft']")
     public WebElement LayoutLeftTxt;
     @FindBy(xpath = "//label[@class='usn-item item  pageLayoutRight']")
@@ -55,7 +62,7 @@ public class NewsLocators extends InitElements {
     @FindBy(xpath = "//span[@id='hidePageHeading']")
     public WebElement HidePageHeadingsTxt;
     @FindBy(xpath = "//input[@id='onPageTitle']")
-    public WebElement PagetitleTxt;
+    public WebElement pageTitleTxt;
     @FindBy(xpath = "//input[@placeholder='Heading goes here']")
     public WebElement SecondaryheadingTxt;
     @FindBy(xpath = "//input[@value='s']")
@@ -88,6 +95,13 @@ public class NewsLocators extends InitElements {
     @FindBy(xpath = "//input[@value='modal-scroll']")
     public WebElement ModalWindowScrollTxt;
 
+    /**
+     * Summary
+     **/
+    @FindBy(xpath = "//button[contains(text(),'Summary')]")
+    public WebElement summaryBtn;
+    @FindBy(id = "pageListingHeading")
+    public WebElement pageListingHeadingTxt;
 
     /**
      * Navigation
@@ -186,5 +200,18 @@ public class NewsLocators extends InitElements {
     @FindBy(xpath = "//span[@id='disableDelete']")
     public WebElement DisableDeleteTxt;
 
+    @FindBy(xpath = "(//span[@class='umb-button__content'])[4]")
+    public WebElement requestPublishBtn;
+    @FindBy(id="workflowComment")
+    public WebElement workflowCommentTxt;
+
+    @FindBy(xpath = "(//span[@class='umb-button__content'])[6]")
+    public WebElement requestPublishFinalBtn;
+
+    @FindBy(xpath = "//input[contains(@id,'search')]")
+    public WebElement searchTxt;
+
+    @FindBy(xpath = "//a[@class='umb-content-grid__item-name umb-outline -light']/span[2]")
+    public List<WebElement> results;
 
 }
